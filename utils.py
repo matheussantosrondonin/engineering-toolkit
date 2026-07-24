@@ -10,7 +10,7 @@
 # importing the necessary modules
 #==========================================================
 
-from config import separator, tool_name, version, author_name
+from config import separator, tool_name, version, author_name, app_converter
 
 #==========================================================
 # Function to display the header information
@@ -23,5 +23,11 @@ def show_header():
     print(f"Author: {author_name}")
     print(separator)
 
-
 #========================================================== 
+# Function to display the header Unit Converter
+#========================================================== 
+
+def show_converter_header():
+    print(separator)
+    print(app_converter)
+    print(separator)

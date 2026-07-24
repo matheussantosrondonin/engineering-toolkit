@@ -25,14 +25,14 @@ show_header()
 # User Interaction name input
 #==========================================================
 
-user_name = input("Please enter your name: ")
+user_name = input("\nPlease enter your name: ")
 
 if not user_name:
     user_name = "User"
 if user_name == author_name:
-    print("Hello, Creator Matheus! It's great to see you using your own toolkit!")
+    print("\nHello, Creator Matheus! It's great to see you using your own toolkit!")
 else:
-    print(f"Welcome, {user_name}! Let's explore the Engineering Toolkit together!")
+    print(f"\nWelcome, {user_name}! Let's explore the Engineering Toolkit together!")
 
 #==========================================================
 # Tool Selection menu
@@ -45,7 +45,7 @@ print("2 - Pressure Calculator")
 print("3 - Exit")
 print(separator)
 
-option_tool = input("Please select a tool by entering the corresponding number: ")
+option_tool = input("\nPlease select a tool by entering the corresponding number: \n")
 
 #==========================================================
 # Tool Execution based on user selection

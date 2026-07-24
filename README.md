@@ -1,21 +1,66 @@
-# Hello Atlas 🚀
+# Engineering Toolkit
 
-My first Python application developed during Project Atlas.
+Engineering Toolkit is a personal engineering software developed during Project Atlas.
 
-## Objective
+The purpose of this project is to improve my software engineering skills while creating practical engineering tools for industrial applications.
 
-Validate my development environment and start my journey in software engineering.
+---
+
+## Current Features
+
+- Project modular architecture
+- Interactive terminal interface
+- Reusable header
+- Configuration module
+- Pressure Calculator (under development)
+- Unit Converter (under development)
+
+---
 
 ## Technologies
 
-- Python 3.14
-- Visual Studio Code
+- Python
 - Git
+- GitHub
+- VS Code
+
+---
+
+## Project Structure
+
+engineering-toolkit/
+
+├── assets/
+
+├── docs/
+
+├── tests/
+
+├── config.py
+
+├── utils.py
+
+├── main.py
+
+├── pressure_calculator.py
+
+├── unit_converter.py
+
+---
+
+## Roadmap
+
+- Pressure Converter
+- Temperature Converter
+- Length Converter
+- Flow Calculator
+- Pneumatic Calculator
+- PLC Utilities
+
+---
 
 ## Author
 
-Matheus Henrique
+Matheus Henrique Silva dos Santos
 
-## Status
-
-Completed ✅
+Project Atlas

@@ -1,7 +1,19 @@
-Version 1.0.0
+1.0.0
 
-• Initial project
+Initial release
 
-• Header
+Added
 
-• Menu
+- Config module
+
+- Utils module
+
+- Main menu
+
+Changed
+
+- Project architecture
+
+Fixed
+
+- Imports

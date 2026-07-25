@@ -15,6 +15,11 @@ The purpose of this project is to improve my software engineering skills while c
 - Pressure Calculator (under development)
 - Unit Converter (under development)
 
+- Interactive main menu
+- Unit Converter module
+- Pressure unit conversion
+- Modular project architecture
+- Shared configuration through `config.py`
 ---
 
 ## Technologies
@@ -58,6 +63,17 @@ engineering-toolkit/
 - PLC Utilities
 
 ---
+
+## Current Status
+
+The first functional version of the Unit Converter is under development.
+
+Implemented:
+
+- Main menu
+- Unit Converter menu
+- Pressure conversion workflow
+- Configuration module
 
 ## Author
 

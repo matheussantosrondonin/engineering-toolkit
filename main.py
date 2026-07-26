@@ -11,8 +11,8 @@
 
 from unit_converter import unit_converter
 from pressure_calculator import pressure_calculator
-from utils import show_header
-from config import separator, author_name
+from utils import show_header, show_tool_menu
+from config import author_name
 
 #==========================================================
 # Tool Introduction
@@ -38,27 +38,28 @@ else:
 # Tool Selection menu
 #==========================================================
 
-print(separator)
-print("Available Tools:")
-print("1 - Unit Converter")
-print("2 - Pressure Calculator")
-print("3 - Exit")
-print(separator)
-
+show_tool_menu()
 option_tool = input("\nPlease select a tool by entering the corresponding number: \n")
 
 #==========================================================
 # Tool Execution based on user selection
 #==========================================================
+while option_tool != "3":
+    if option_tool == "1":
+        unit_converter()
+    
+      
+    elif option_tool == "2":
+        pressure_calculator()
 
-if option_tool == "1":
-    unit_converter()
-elif option_tool == "2":
-    pressure_calculator()
-elif option_tool == "3":
-    print("Thank you for using the Engineering Toolkit. Goodbye!")
-else:
+    show_tool_menu()
+    option_tool = input("\nPlease select a tool by entering the corresponding number: \n")
+
+while option_tool not in ["1", "2", "3"]:
     print("Invalid option. Please try again.")
+    option_tool = input("\nPlease select a tool by entering the corresponding number: \n")
+
+print("\nThank you for using the Engineering Toolkit! Goodbye!")
 
 # alterar para comando from assim que o arquivo unit_converter.py e pressure_calculator.py estiverem prontos
 #==========================================================

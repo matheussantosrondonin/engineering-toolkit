@@ -10,7 +10,7 @@
 # importing the necessary modules
 #==========================================================
 
-from config import separator, tool_name, version, author_name, app_converter
+from config import separator, tool_name, version, author_name, app_converter,list_of_tools
 
 #==========================================================
 # Function to display the header information
@@ -30,4 +30,11 @@ def show_header():
 def show_converter_header():
     print(separator)
     print(app_converter)
+    print(separator)
+
+def show_tool_menu():
+    print(separator)
+    print("Available Tools:")
+    for tool in list_of_tools:
+        print(tool)
     print(separator)

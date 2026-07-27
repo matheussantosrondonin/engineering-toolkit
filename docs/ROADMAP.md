@@ -39,10 +39,24 @@ Version 4
 - [x] Project architecture
 - [x] Unit Converter
 - [x] Pressure conversion
-- [ ] Temperature conversion
-- [ ] Length conversion
-- [ ] Mass conversion
-- [ ] Volume conversion
+- [x] Create Unit Converter
+- [x] Implement main menu navigation
+- [x] Implement Unit Converter navigation
+- [x] Separate pressure conversion into its own module
+- [x] Create temperature conversion module structure
+- [x] Implement return navigation between menus
+- [ ] Complete temperature conversion
+- [ ] Implement length conversion
+- [ ] Implement mass conversion
+- [ ] Implement volume conversion
+- [ ] Improve input validation
+- [ ] Refactor repeated conversion logic
+
+### Architecture
+
+- [ ] Review navigation architecture as the number of tools increases
+- [ ] Evaluate whether a dedicated menu/navigation module is necessary
+- [ ] Improve separation between interface, logic and configuration
 
 ### Improvements
 

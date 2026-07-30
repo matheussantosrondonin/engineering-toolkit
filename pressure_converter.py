@@ -5,15 +5,18 @@
 # Author: Matheus Henrique Silva dos Santos
 # ==========================================================
 
-
+#==========================================================
+# importing the necessary modules
+#==========================================================
 from config import list_of_pressure_units
 import unit_converter
+from utils import show_pressure_units
+
+#==========================================================
 
 def pressure_converter():
     
-        print("\nAvailable pressure units:\n")
-        for pressure_unit in list_of_pressure_units:
-            print(f"  {pressure_unit}")
+        show_pressure_units()
             
             # 2. Escolha da PRIMEIRA unidade (Origem)
         unit_choice = input("\nPlease select a pressure unit by entering the corresponding number: ")

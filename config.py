@@ -14,3 +14,4 @@ app_converter = "Unit Converter"
 list_of_tools = ["1 - Unit Converter", "2 - Pressure Calculator", "3 - Exit"]
 list_of_conversion_types = ["1 - Pressure", "2 - Temperature", "3 - Length", "4 - Mass", "5 - Volume", "6 - Return to Main Menu"]
 list_of_pressure_units = ["1 - Pascal (Pa)", "2 - Bar (bar)", "3 - Atmosphere (atm)", "4 - Pounds per Square Inch (psi)", "5 - Return to Conversion Types"]
+list_of_temperature_units = ["1 - Celsius (°C)", "2 - Fahrenheit (°F)", "3 - Kelvin (K)", "4 - Return to Conversion Types"]

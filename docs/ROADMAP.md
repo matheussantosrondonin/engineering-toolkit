@@ -63,3 +63,21 @@ Version 4
 - [ ] Loop navigation
 - [ ] Error handling
 - [ ] Colored terminal
+
+## Unit Converter
+
+### Completed
+- Pressure Converter
+- Navigation between menus
+- Temperature Converter structure
+- Temperature unit selection
+- User input validation
+
+### In Progress
+- Temperature conversion refactoring
+- Shared conversion architecture
+
+### Next
+- Length Converter
+- Mass Converter
+- Volume Converter

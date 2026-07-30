@@ -10,7 +10,7 @@
 # importing the necessary modules
 #==========================================================
 
-from config import separator, tool_name, version, author_name, app_converter,list_of_tools, list_of_conversion_types, list_of_pressure_units
+from config import separator, tool_name, version, author_name, app_converter,list_of_tools, list_of_conversion_types, list_of_pressure_units, list_of_temperature_units
 
 #==========================================================
 # Function to display the header information
@@ -41,4 +41,18 @@ def show_conversion_types():
     print("Available Conversion Types:")
     for conversion_type in list_of_conversion_types:
         print(conversion_type)
+    print(separator)
+
+def show_pressure_units():
+    print(separator)
+    print("Available Pressure Units:")
+    for pressure_unit in list_of_pressure_units:
+        print(pressure_unit)
+    print(separator)
+
+def show_temperature_units():
+    print(separator)
+    print("Available Temperature Units:")
+    for temperature_unit in list_of_temperature_units:
+        print(temperature_unit)
     print(separator)

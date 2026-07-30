@@ -66,3 +66,16 @@ Adicione:
 
 - Fixed menu navigation behavior after completing a conversion.
 - Fixed the previous behavior where the Unit Converter could not properly return control to the main menu.
+
+### Added
+- Added initial structure for Temperature Converter.
+- Added temperature unit selection menu.
+
+### Changed
+- Improved Unit Converter architecture by isolating temperature conversion into its own module.
+- Reworked temperature conversion logic to use Celsius as the intermediate reference unit.
+- Improved code readability using dedicated conversion functions.
+
+### Fixed
+- Corrected the mathematical approach used for temperature conversion.
+- Fixed incorrect direct conversion between temperature scales.

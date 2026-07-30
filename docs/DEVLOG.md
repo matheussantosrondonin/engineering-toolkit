@@ -310,3 +310,46 @@ Review the pressure conversion logic.
 Implement additional conversion types.
 Reduce duplicated code where appropriate.
 Reassess the navigation architecture as the number of tools increases.
+
+# Week 2 — Day 2
+## Date
+2026-07-30
+
+## Goal
+Continue the development of the Unit Converter by implementing the Temperature Converter and improving the conversion architecture.
+
+## What was implemented
+
+- Created the initial Temperature Converter module.
+- Added the temperature units menu.
+- Implemented user input validation.
+- Added support for selecting source and target temperature units.
+- Implemented the initial conversion workflow.
+
+## Important discovery
+
+Unlike pressure conversion, temperature conversion cannot use a simple multiplication factor.
+
+During development it became clear that temperature scales have different zero reference points.
+
+To solve this, every conversion now follows two steps:
+
+1. Convert the original value to Celsius.
+2. Convert the Celsius value to the destination unit.
+
+This architecture makes the converter easier to maintain and allows adding new temperature scales without creating dozens of conversion formulas.
+
+## Programming concepts learned
+
+- Function parameters
+- Function return values
+- Data flow between functions
+- Intermediate conversion model
+- Separation of responsibilities
+
+## Next steps
+
+- Refactor the Temperature Converter using dedicated helper functions (`to_celsius()` and `from_celsius()`).
+- Reduce duplicated dictionaries.
+- Improve numeric formatting.
+- Expand the converter to additional unit categories.

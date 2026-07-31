@@ -11,43 +11,44 @@
 #==========================================================
 
 from utils import show_temperature_units
+from conversion_math import (to_celsius, from_celsius)
 
 #==========================================================
-
-
 
 def temperature_converter():
     #menu for temperature conversion
     show_temperature_units()
 
     #choose temperature unit
-    first_unit_temperature_choice = input("\nPlease select a temperature unit by entering the corresponding number: ")
+    source_unit_choice = input("\nPlease select a temperature unit by entering the corresponding number: ")
 
-    first_unit_temperature_dict = {
+    temperature_units = {
         "1": "Celsius (°C)",
         "2": "Fahrenheit (°F)",
         "3": "Kelvin (K)"
     }
 
-    if first_unit_temperature_choice == "4":
+    if source_unit_choice == "4":
         print("Returning to conversion types menu.")
-        return
+        return #end actual function and return control to the caller of this function.
 
-    if first_unit_temperature_choice in first_unit_temperature_dict:
-        selected_unit = first_unit_temperature_dict[first_unit_temperature_choice]
-        print(f"You selected {selected_unit}.")
+    if source_unit_choice in temperature_units:
+        source_unit = temperature_units[source_unit_choice]
+        print(f"You selected {source_unit}.")
     else:
         print("Invalid choice.")
         return
 
+    #validation of number value
     conversion_value_input = input("\nPlease enter a temperature value to convert: ")
     try:
         conversion_value = float(conversion_value_input)
     except ValueError:
         print("Invalid input. Please enter a valid number.")
         return
-    
-    print(f"You entered: {conversion_value} {selected_unit}")
+
+    result_display = int(conversion_value) if conversion_value.is_integer() else round(conversion_value, 4)
+    print(f"You entered: {result_display} {source_unit}")
 
 
     print("\npress enter to continue...")
@@ -59,49 +60,28 @@ def temperature_converter():
     #choose temperature unit
     second_unit_temperature_choice = input("\nNow, please select the second temperature unit for conversion by entering the corresponding number: ")
 
-    second_unit_temperature_dict = {
-        "1": "Celsius (°C)",
-        "2": "Fahrenheit (°F)",
-        "3": "Kelvin (K)"
-    }
-
     if second_unit_temperature_choice == "4":
         print("Returning to conversion types menu.")
         return
 
-    if second_unit_temperature_choice in second_unit_temperature_dict:
-        selected_unit_2 = second_unit_temperature_dict[second_unit_temperature_choice]
+    if second_unit_temperature_choice in temperature_units:
+        target_unit = temperature_units[second_unit_temperature_choice]
 
-        if first_unit_temperature_choice == second_unit_temperature_choice:
+        if source_unit_choice == second_unit_temperature_choice:
             print("Both selected units are the same. No conversion needed.")
             return
 
         else:
-            def to_celsius(value, unit):
+            value_in_celsius = to_celsius(conversion_value, source_unit)
+            result = from_celsius(value_in_celsius, target_unit)
 
-                if unit == "Celsius (°C)":
-                    return value
+        temperature_result = (
+            int(result)
+            if result.is_integer()
+            else round(result, 4)
+        )
 
-                elif unit == "Fahrenheit (°F)":
-                    return (value - 32) / 1.8
-
-                elif unit == "Kelvin (K)":
-                    return value - 273.15
-
-            def from_celsius(value, unit):
-                if unit == "Celsius (°C)":
-                    return value
-
-                elif unit == "Fahrenheit (°F)":
-                    return (value * 1.8) + 32
-
-                elif unit == "Kelvin (K)":
-                    return value + 273.15
-
-            value_in_celsius = to_celsius(conversion_value, selected_unit)
-            result = from_celsius(value_in_celsius, selected_unit_2)
-
-        text_result = f"{conversion_value} {selected_unit} is equal to {result} {selected_unit_2}"
+        text_result = f"{result_display} {source_unit} is equal to {temperature_result} {target_unit}"
 
         largura = len(text_result)
         print("\n╔" + "═" * largura + "╗")

@@ -8,83 +8,78 @@
 #==========================================================
 # importing the necessary modules
 #==========================================================
-from config import list_of_pressure_units
-import unit_converter
 from utils import show_pressure_units
-
+from conversion_math import (to_pascal, from_pascal)
 #==========================================================
 
+
+
 def pressure_converter():
-    
+        #menu for pressure conversion
         show_pressure_units()
             
-            # 2. Escolha da PRIMEIRA unidade (Origem)
-        unit_choice = input("\nPlease select a pressure unit by entering the corresponding number: ")
-    
-        if unit_choice == "1":
-            print("You selected Pascal (Pa).")
-            unit = "Pa"
-        elif unit_choice == "2":
-            print("You selected Bar (bar).")
-            unit = "bar"
-        elif unit_choice == "3":
-            print("You selected Atmosphere (atm).")
-            unit = "atm"
-        elif unit_choice == "4":
-            print("You selected Pounds per Square Inch (psi).")
-            unit = "psi"
-        elif unit_choice == "5":
+        #choose pressure unit
+        source_unit_choice = input("\nPlease select a pressure unit by entering the corresponding number: ")
+
+        pressure_units = {
+            "1": "Pa",
+            "2": "bar",
+            "3": "atm",
+            "4": "psi"
+        }
+
+        if source_unit_choice == "5":
             print("Returning to conversion types menu.")
-            return  #encerra a função atual e devolve o controle para quem chamou essa função.
+            return  #end actual function and return control to the caller of this function.
+    
+        if source_unit_choice in pressure_units:
+            source_unit = pressure_units[source_unit_choice]
+            print(f"You selected {source_unit}.")
         else:
             print("Invalid choice.")
             return
     
-    #3. Leitura e validação do valor numérico
-        value_input = input("\nPlease digita a value: ")
-        num_1 = float(value_input)
+        #validation of number value
+        conversion_value_input = input("\nPlease enter a value: ")
+        try:
+            conversion_value = float(conversion_value_input)
+        except ValueError:
+            print("Invalid input. Please enter a valid number.")
+            return
     
         # Formata o número inserido para exibição limpa
-        num_1_display = int(num_1) if num_1.is_integer() else round(num_1, 2)
-        print(f"You entered: {num_1_display} {unit}")
+        result_display = int(conversion_value) if conversion_value.is_integer() else round(conversion_value, 2)
+        print(f"You entered: {result_display} {source_unit}")
+
+        print("\npress enter to continue...")
+        input()  # Wait for user to press Enter
     
-        # 4. Escolha da SEGUNDA unidade (Destino)
-        print("\nAvailable pressure units:\n")
-        for pressure_unit in list_of_pressure_units:
-            print(f"  {pressure_unit}")
-        target_choice = input("\nNow, please select the second pressure unit for conversion:\n")
+        #menu for pressure conversion
+        show_pressure_units()
+
+        #choose pressure unit
+        target_unit_choice = input("\nNow, please select the second pressure unit for conversion:\n")
     
-            # Mapeamento da escolha numérica para a string da unidade
-        unidades_mapeadas = {"1": "Pa", "2": "bar", "3": "atm", "4": "psi"}
-    
-        if target_choice == "5":
+        if target_unit_choice == "5":
             print("Returning to conversion types menu.")
             return  #encerra a função atual e devolve o controle para quem chamou essa função.
             
-        if target_choice in unidades_mapeadas:
-            target_unit = unidades_mapeadas[target_choice]
-                
-            # Se forem iguais, não há cálculo
-            if unit == target_unit:
-                result = num_1
-            else:
-            # Fatores universais baseados em 1 Pascal (Pa)
-                fatores_para_pa = {"Pa": 1.0, "bar": 100000.0, "atm": 101325.0, "psi": 6894.75729}
-                    
-                # Cálculo inteligente: converte para Pa e depois para o destino
-                valor_em_pa = num_1 * fatores_para_pa[unit]
-                result = valor_em_pa / fatores_para_pa[target_unit]
+        if target_unit_choice in pressure_units:
+            target_unit = pressure_units[target_unit_choice]
     
             # Formata o resultado final (int ou float com até 4 casas)
-            result_display = int(result) if result.is_integer() else round(result, 4)
+            value_in_pascal = to_pascal(conversion_value, source_unit)
+            result = from_pascal(value_in_pascal, target_unit)
                 
             # Monta a string do resultado
-            texto_resultado = f" Conversion result: {num_1_display} {unit} = {result_display} {target_unit} "
-                
-            # Desenha a caixa de resposta no terminal do VS Code
-            largura = len(texto_resultado)
+            pressure_result = int(result)if result.is_integer()else round(result, 4)
+            
+            text_result = f" Conversion result: {result_display} {source_unit} = {pressure_result} {target_unit} "
+
+            #Desenha a caixa de resposta no terminal do VS Code
+            largura = len(text_result)
             print("\n╔" + "═" * largura + "╗")
-            print(f"║{texto_resultado}║")
+            print(f"║{text_result}║")
             print("╚" + "═" * largura + "╝\n")
         else:
             print("Invalid target unit selection.")

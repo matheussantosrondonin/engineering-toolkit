@@ -10,8 +10,9 @@
 # importing the necessary modules
 #==========================================================
 
-from utils import show_temperature_units
+from utils import show_result_box, show_temperature_units
 from conversion_math import (to_celsius, from_celsius)
+from config import temperature_units
 
 #==========================================================
 
@@ -21,12 +22,6 @@ def temperature_converter():
 
     #choose temperature unit
     source_unit_choice = input("\nPlease select a temperature unit by entering the corresponding number: ")
-
-    temperature_units = {
-        "1": "Celsius (°C)",
-        "2": "Fahrenheit (°F)",
-        "3": "Kelvin (K)"
-    }
 
     if source_unit_choice == "4":
         print("Returning to conversion types menu.")
@@ -83,9 +78,7 @@ def temperature_converter():
 
         text_result = f"{result_display} {source_unit} is equal to {temperature_result} {target_unit}"
 
-        largura = len(text_result)
-        print("\n╔" + "═" * largura + "╗")
-        print(f"║{text_result}║")
-        print("╚" + "═" * largura + "╝\n")
+        show_result_box(text_result)
+
     else:
         print("Invalid target unit selection.")

@@ -10,7 +10,7 @@
 # importing the necessary modules
 #==========================================================
 
-from config import separator, tool_name, version, author_name, app_converter,list_of_tools, list_of_conversion_types, list_of_pressure_units, list_of_temperature_units
+from config import separator, tool_name, version, author_name, app_converter,list_of_tools, list_of_conversion_types, list_of_pressure_units, list_of_temperature_units, list_of_length_units, list_of_mass_units, list_of_volume_units
 
 #==========================================================
 # Function to display the header information
@@ -50,9 +50,36 @@ def show_pressure_units():
         print(pressure_unit)
     print(separator)
 
+def show_length_units():
+    print(separator)
+    print("Available Length Units:")
+    for length_unit in list_of_length_units:
+        print(length_unit)
+    print(separator)
+
 def show_temperature_units():
     print(separator)
     print("Available Temperature Units:")
     for temperature_unit in list_of_temperature_units:
         print(temperature_unit)
     print(separator)
+
+def show_mass_units():
+    print(separator)
+    print("Available Mass Units:")
+    for mass_unit in list_of_mass_units:
+        print(mass_unit)
+    print(separator)
+
+def show_volume_units():
+    print(separator)
+    print("Available Volume Units:")
+    for volume_unit in list_of_volume_units:
+        print(volume_unit)
+    print(separator)
+
+def show_result_box(text_result):
+    largura = len(text_result)
+    print("\n╔" + "═" * largura + "╗")
+    print(f"║{text_result}║")
+    print("╚" + "═" * largura + "╝\n")

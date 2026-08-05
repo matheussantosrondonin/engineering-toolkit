@@ -9,9 +9,12 @@
 # importing the necessary modules
 #==========================================================
 
+from length_converter import length_converter
 from pressure_converter import pressure_converter
 from utils import show_conversion_types
 from temperature_converter import temperature_converter
+from mass_converter import mass_converter
+from volume_converter import volume_converter
 
 # ==========================================================
 # Menu for the Unit Converter
@@ -41,6 +44,16 @@ def unit_converter():
 
         elif menu_choice == "2":
             temperature_converter()
+
+        elif menu_choice == "3":
+            length_converter()
+
+        elif menu_choice == "4":
+            mass_converter()
+
+        elif menu_choice == "5":
+            volume_converter()
+        
 
 
 

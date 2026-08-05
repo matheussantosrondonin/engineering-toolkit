@@ -8,8 +8,9 @@
 #==========================================================
 # importing the necessary modules
 #==========================================================
-from utils import show_pressure_units
+from utils import show_pressure_units, show_result_box
 from conversion_math import (to_pascal, from_pascal)
+from config import pressure_units
 #==========================================================
 
 
@@ -20,13 +21,6 @@ def pressure_converter():
             
         #choose pressure unit
         source_unit_choice = input("\nPlease select a pressure unit by entering the corresponding number: ")
-
-        pressure_units = {
-            "1": "Pa",
-            "2": "bar",
-            "3": "atm",
-            "4": "psi"
-        }
 
         if source_unit_choice == "5":
             print("Returning to conversion types menu.")
@@ -77,9 +71,7 @@ def pressure_converter():
             text_result = f" Conversion result: {result_display} {source_unit} = {pressure_result} {target_unit} "
 
             #Desenha a caixa de resposta no terminal do VS Code
-            largura = len(text_result)
-            print("\n╔" + "═" * largura + "╗")
-            print(f"║{text_result}║")
-            print("╚" + "═" * largura + "╝\n")
+            show_result_box(text_result)
+
         else:
             print("Invalid target unit selection.")

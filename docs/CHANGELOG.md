@@ -1,30 +1,61 @@
-1.0.0
-
-Initial release
-
-Added
-
-- Config module
-
-- Utils module
-
-- Main menu
-
-Changed
-
-- Project architecture
-
-Fixed
-
-- Imports
-
-
 # Changelog
 
-## Version 0.2.0
+All notable changes to this project will be documented in this file.
+
+The format is based on **Keep a Changelog** and this project follows **Semantic Versioning**.
+
+---
+
+## [1.0.0] - 2026-08-05
 
 ### Added
+- Initial Engineering Toolkit project structure.
+- Main application entry point (`main.py`).
+- Configuration module (`config.py`).
+- Utility module (`utils.py`).
+- Unit Converter tool.
+- Pressure Converter.
+- Temperature Converter.
+- Length Converter.
+- Mass Converter.
+- Volume Converter.
+- Shared mathematical conversion module (`conversion_math.py`).
+- Shared configuration dictionaries for all supported units.
+- Reusable result box (`show_result_box()`).
+- Menu support for all implemented conversion categories.
+- Pressure Calculator module structure.
 
+### Changed
+- Refactored all converters to use shared mathematical functions.
+- Centralized conversion logic inside `conversion_math.py`.
+- Centralized configuration values inside `config.py`.
+- Standardized converter workflow across all modules.
+- Improved navigation between menus.
+- Improved project modularity by separating:
+  - User Interface
+  - Configuration
+  - Mathematical calculations
+  - Conversion modules
+
+### Fixed
+- Fixed navigation flow between Main Menu and Unit Converter.
+- Fixed return behavior from conversion modules.
+- Fixed temperature conversion logic using Celsius as an intermediate reference.
+- Improved numeric formatting for conversion results.
+- Reduced duplicated code across converters.
+
+### Internal
+- Improved project architecture.
+- Improved maintainability.
+- Improved code readability.
+- Standardized naming conventions.
+- Reduced repeated logic across the project.
+
+---
+
+## [0.2.0] - 2026-07-30
+
+### Added
 - Initial Unit Converter module.
 - Pressure conversion workflow.
 - Pressure unit selection.
@@ -32,50 +63,49 @@ Fixed
 - Shared configuration lists.
 
 ### Changed
-
 - Improved project architecture.
-- Moved shared values to `config.py`.
-- Reduced multiple `if/elif` statements using dictionaries.
+- Replaced repetitive `if/elif` structures with dictionaries.
+- Moved shared configuration values to `config.py`.
 
 ### Notes
+- Pressure conversions use Pascal (Pa) as the reference unit.
 
-Pressure conversions are now performed using Pascal (Pa) as the reference unit.
+---
 
-
-Adicione:
-
-```md
-## [Unreleased] - 2026-07-27
+## [0.1.0] - 2026-07-27
 
 ### Added
-
-- Added `pressure_converter.py` as a dedicated pressure conversion module.
-- Added `temperature_converter.py` as the initial temperature conversion module.
-- Added `show_conversion_types()` to `utils.py`.
-
-### Changed
-
-- Improved navigation between the main menu and Unit Converter.
-- Added continuous navigation loops to `main.py` and `unit_converter.py`.
-- Implemented return from Unit Converter to the main menu.
-- Implemented return from Pressure Converter to the Unit Converter.
-- Centralized conversion-type menu display in `utils.py`.
-- Improved separation of responsibilities between modules.
-
-### Fixed
-
-- Fixed menu navigation behavior after completing a conversion.
-- Fixed the previous behavior where the Unit Converter could not properly return control to the main menu.
-
-### Added
-- Added initial structure for Temperature Converter.
-- Added temperature unit selection menu.
+- Initial project structure.
+- Main menu.
+- `config.py`
+- `utils.py`
 
 ### Changed
-- Improved Unit Converter architecture by isolating temperature conversion into its own module.
-- Reworked temperature conversion logic to use Celsius as the intermediate reference unit.
-- Improved code readability using dedicated conversion functions.
+- Initial modular architecture.
 
 ### Fixed
-- Corrected the mathematical approach used for temperature conversion.
-- Fixed incorrect direct conversion between temperature scales.
+- Initial import organization.
+Minha recomendação
+
+Agora que o projeto está ficando grande, eu faria a organização dos arquivos do repositório assim:
+
+Engineering-Toolkit/
+│
+├── CHANGELOG.md
+├── ROADMAP.md
+├── DEVLOG.md
+├── README.md
+├── LICENSE
+│
+├── main.py
+├── config.py
+├── utils.py
+├── conversion_math.py
+│
+├── pressure_converter.py
+├── temperature_converter.py
+├── length_converter.py
+├── mass_converter.py
+├── volume_converter.py
+│
+└── pressure_calculator.py

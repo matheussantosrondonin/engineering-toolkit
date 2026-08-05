@@ -1,355 +1,271 @@
-Version 1.0.0
+# Development Log
 
-Initial project structure
+This document records the daily development progress of the Engineering Toolkit, including implementation details, architectural decisions, lessons learned, and future plans.
+
+---
+
+# Week 1 — Day 1
+**Date:** 2026-07-26
+
+## Objective
+
+Initialize the Engineering Toolkit project structure.
+
+## Completed
+
+- Created the project architecture.
+- Added `main.py`.
+- Added `config.py`.
+- Added `utils.py`.
+- Added `pressure_calculator.py`.
+- Added `unit_converter.py`.
+- Implemented the application header.
+- Created the initial menu system.
+
+## Lessons Learned
+
+- Importance of separating configuration from business logic.
+- Benefits of creating reusable utility functions early.
+
+## Next Steps
+
+- Improve menu navigation.
+- Implement the first conversion module.
+- Add pressure conversion.
+
+---
+
+# Week 1 — Day 2
+**Date:** 2026-07-27
+
+## Objective
+
+Implement the first functional conversion module.
+
+## Completed
+
+- Created the Pressure Converter.
+- Implemented pressure unit selection.
+- Added numeric input validation.
+- Added pressure conversion calculations.
+- Displayed formatted conversion results.
+
+## Improvements
+
+- Centralized configuration values.
+- Replaced repetitive conditionals with dictionaries.
+- Improved code readability.
+
+## Lessons Learned
+
+Using dictionaries instead of multiple `if/elif` statements makes the code cleaner and easier to maintain.
+
+## Next Steps
+
+- Implement temperature conversion.
+- Improve menu navigation.
+
+---
+
+# Week 2 — Day 1
+**Date:** 2026-07-30
+
+## Objective
+
+Improve application navigation and modular architecture.
+
+## Completed
+
+### Main Menu
+
+- Reworked the application navigation using `while True`.
+- Centralized top-level navigation in `main.py`.
+
+### Unit Converter
+
+- Added an independent navigation loop.
+- Implemented "Return to Main Menu".
+
+### Pressure Converter
+
+- Moved pressure conversion into its own module.
+- Improved module responsibility separation.
+
+### Temperature Converter
+
+- Created the initial module structure.
+
+### Utilities
+
+- Added reusable menu display functions.
+
+## Architecture
+
+Current hierarchy:
+
+```
+main.py
+│
+├── unit_converter.py
+│   ├── pressure_converter.py
+│   ├── temperature_converter.py
+│   ├── length_converter.py
+│   └── ...
+│
+└── pressure_calculator.py
+```
+
+## Lessons Learned
+
+A function always returns to the function that called it.
+
+Understanding this simplified the application's navigation architecture considerably.
+
+## Next Steps
+
+- Complete Temperature Converter.
+- Improve validation.
+- Continue modularization.
+
+---
+
+# Week 2 — Day 2
+**Date:** 2026-08-01
+
+## Objective
+
+Implement the Temperature Converter.
+
+## Completed
+
+- Created the temperature conversion workflow.
+- Added source and target unit selection.
+- Added numeric validation.
+- Implemented Celsius intermediary conversion model.
+
+## Technical Decision
+
+Unlike pressure conversion, temperature cannot be converted using a single multiplication factor.
+
+The adopted workflow is:
+
+```
+Original Unit
+      │
+      ▼
+  Celsius
+      │
+      ▼
+Target Unit
+```
+
+This approach simplifies future maintenance and expansion.
+
+## Lessons Learned
+
+- Function parameters
+- Return values
+- Data flow
+- Intermediate conversion architecture
+
+## Next Steps
+
+- Refactor repeated code.
+- Improve formatting.
+- Add additional converters.
+
+---
+
+# Week 3 — Day 1
+**Date:** 2026-08-05
+
+## Objective
+
+Expand the Unit Converter and improve the project's architecture.
+
+## Completed
+
+### New Converters
+
+- Added Length Converter.
+- Added Mass Converter.
+- Added Volume Converter.
+
+### Shared Conversion Logic
+
+Created `conversion_math.py` containing:
+
+- Pressure conversion functions
+- Temperature conversion functions
+- Length conversion functions
+- Mass conversion functions
+- Volume conversion functions
+
+### Configuration
+
+Moved all unit dictionaries into `config.py`.
 
 Added:
 
-✔ main.py
+- Pressure units
+- Temperature units
+- Length units
+- Mass units
+- Volume units
 
-✔ config.py
+### Utilities
 
-✔ utils.py
+Improved `utils.py` by adding reusable functions:
 
-✔ pressure_calculator.py
+- `show_result_box()`
+- Unit display menus
+- Shared menu utilities
 
-✔ unit_converter.py
+### Refactoring
 
-Implemented:
+Standardized every converter to follow the same workflow:
 
-✔ show_header()
+1. Select source unit
+2. Enter value
+3. Select target unit
+4. Perform conversion
+5. Display formatted result
 
-Improved:
+This significantly reduced duplicated code and improved maintainability.
 
-✔ modular architecture
+## Current Architecture
 
-Next version:
-
-⬜ reusable menu
-
-⬜ pressure conversion
-
-⬜ temperature conversion
-
-# Development Log
-
-## Day 02
-
-### Objective
-
-Start implementing the first functional module.
-
-### Progress
-
-Implemented the Unit Converter module.
-
-The pressure conversion workflow now performs the following steps:
-
-1. User selects Pressure.
-2. Selects source unit.
-3. Enters the value.
-4. Selects destination unit.
-5. Receives the converted value.
-
-### Improvements
-
-- Centralized configuration values.
-- Created reusable converter header.
-- Introduced dictionaries to replace repetitive conditional structures.
-
-### Next Steps
-
-- Return to Main Menu.
-- Temperature conversions.
-- Input validation.
-
-
-
-# Development Log
-
-## Week 2 — Day 01
-**Date:** 2026-07-27
-
-### Focus
-
-Today's development focused on improving the navigation architecture of the Engineering Toolkit.
-
-The main objective was to make the application capable of moving between the main menu, the Unit Converter, and its conversion modules without requiring each module to directly control the previous menu.
-
----
-
-### What Was Implemented
-
-#### 1. Main Menu Navigation
-
-The main menu was reorganized using a continuous `while True` loop.
-
-The application now:
-
-1. Displays the main menu.
-2. Receives the user's choice.
-3. Validates the option.
-4. Executes the selected tool.
-5. Returns to the main menu after the tool finishes.
-6. Continues until the user selects `3 - Exit`.
-
-The main navigation is now controlled by `main.py`.
-
-This established the idea that `main.py` is responsible for controlling the application's highest-level navigation.
-
----
-
-### 2. Unit Converter Navigation
-
-The `unit_converter.py` module was changed to use its own navigation loop.
-
-The Unit Converter now controls its own conversion-type menu:
-
-Unit Converter
+```
+main.py
 │
-├── 1 - Pressure
-├── 2 - Temperature
-├── 3 - Length
-├── 4 - Mass
-├── 5 - Volume
-└── 6 - Return to Main Menu
-
-The module remains active while the user wants to perform conversions.
-
-Selecting:
-
-6 - Return to Main Menu
-
-causes unit_converter() to execute:
-
-return
-
-This ends the current function and returns control to main.py.
-
----
-
-### 3. Pressure Converter Module
-
-The pressure conversion logic was separated from unit_converter.py into:
-
-pressure_converter.py
-
-This was an important structural improvement.
-
-Instead of having all conversion logic inside the Unit Converter, the responsibility is now divided:
-
-main.py
-    ↓
-unit_converter.py
-    ↓
-pressure_converter.py
-
-Each module has a more specific responsibility.
-
-The pressure_converter() function returns to unit_converter() when the user selects:
-
-5 - Return to Conversion Types
-
-The Unit Converter then continues controlling its own menu.
-
-### 4. Temperature Converter Module
-
-A new module was created:
-
-temperature_converter.py
-
-At the moment, it contains a placeholder implementation indicating that temperature conversion is under development.
-
-This establishes the structure that will later be used for additional conversion types.
-
-### 5. Utility Functions
-
-The utils.py module was reorganized.
-
-A new function was created:
-
-show_conversion_types()
-
-This function is responsible for displaying the Unit Converter menu.
-
-The responsibility is therefore separated from unit_converter.py.
-
-The current structure is becoming:
-
-config.py
-    ↓
-utils.py
-    ↓
-unit_converter.py
-    ↓
-pressure_converter.py
-temperature_converter.py
-
-This reduces repeated menu-printing code and makes future changes easier.
-
-### 6. Navigation and Function Responsibility
-
-One of the most important lessons from today's development was understanding how functions return control to the function that called them.
-
-For example:
-
-if option_tool == "1":
-    unit_converter()
-
-When unit_converter() calls:
-
-pressure_converter()
-
-the flow becomes:
-
-main.py
-   ↓
-unit_converter()
-   ↓
-pressure_converter()
-
-When pressure_converter() executes:
-
-return
-
-it does not return directly to main.py.
-
-It returns to the function that called it:
-
-pressure_converter()
-   ↑
-unit_converter()
-
-Then, when unit_converter() eventually executes:
-
-return
-
-control goes back to:
-
-main.py
-
-This helped clarify the difference between:
-
-ending a function;
-returning control to its caller;
-continuing a loop;
-returning to a higher-level menu.
-### 7. while True and Navigation
-
-The project initially attempted to control navigation using several independent while conditions.
-
-This created confusion because the program needed to know which component was responsible for each level of navigation.
-
-The current structure uses:
-
-while True:
-
-for the main application and for the Unit Converter.
-
-The loop is terminated explicitly when the corresponding exit option is selected.
-
-For example:
-
-if option_tool == "3":
-    break
-
-and:
-
-if menu_choice == "6":
-    return
-
-This made the navigation considerably clearer.
-
-### 8. Important Learning
-
-Today's main lesson was that navigation should follow the responsibility hierarchy of the application.
-
-The current architecture can be represented as:
-
-Engineering Toolkit
+├── config.py
+├── utils.py
+├── conversion_math.py
 │
-└── main.py
-      │
-      ├── Unit Converter
-      │     │
-      │     ├── Pressure Converter
-      │     │
-      │     ├── Temperature Converter
-      │     │
-      │     ├── Length Converter
-      │     │
-      │     └── Volume Converter
-      │
-      └── Pressure Calculator
+├── unit_converter.py
+│
+├── pressure_converter.py
+├── temperature_converter.py
+├── length_converter.py
+├── mass_converter.py
+├── volume_converter.py
+│
+└── pressure_calculator.py
+```
 
-Each level is responsible for its own menu and delegates specialized work to the appropriate module.
+## Lessons Learned
 
-This is helping move the project away from a single large script and toward a modular architecture.
+One of the biggest improvements was separating responsibilities into three distinct layers:
 
-Current Status
+- Configuration (`config.py`)
+- Mathematical logic (`conversion_math.py`)
+- User interface (`*_converter.py`)
 
-The navigation between the main menu and Unit Converter is now functional.
+This architecture makes adding future converters significantly easier.
 
-Current implemented structure:
+## Next Steps
 
-Main menu
-Unit Converter
-Pressure Converter
-Temperature Converter placeholder
-Return to Conversion Types
-Return to Main Menu
-Exit application
-Input validation for main menus
-Shared menu display functions in utils.py
-Next Steps
-
-The next development steps are:
-
-Improve input validation inside the conversion modules.
-Complete temperature conversion.
-Review the pressure conversion logic.
-Implement additional conversion types.
-Reduce duplicated code where appropriate.
-Reassess the navigation architecture as the number of tools increases.
-
-# Week 2 — Day 2
-## Date
-2026-07-30
-
-## Goal
-Continue the development of the Unit Converter by implementing the Temperature Converter and improving the conversion architecture.
-
-## What was implemented
-
-- Created the initial Temperature Converter module.
-- Added the temperature units menu.
-- Implemented user input validation.
-- Added support for selecting source and target temperature units.
-- Implemented the initial conversion workflow.
-
-## Important discovery
-
-Unlike pressure conversion, temperature conversion cannot use a simple multiplication factor.
-
-During development it became clear that temperature scales have different zero reference points.
-
-To solve this, every conversion now follows two steps:
-
-1. Convert the original value to Celsius.
-2. Convert the Celsius value to the destination unit.
-
-This architecture makes the converter easier to maintain and allows adding new temperature scales without creating dozens of conversion formulas.
-
-## Programming concepts learned
-
-- Function parameters
-- Function return values
-- Data flow between functions
-- Intermediate conversion model
-- Separation of responsibilities
-
-## Next steps
-
-- Refactor the Temperature Converter using dedicated helper functions (`to_celsius()` and `from_celsius()`).
-- Reduce duplicated dictionaries.
-- Improve numeric formatting.
-- Expand the converter to additional unit categories.
+- Improve input validation.
+- Eliminate remaining duplicated code.
+- Begin development of the Pressure Calculator.
+- Implement additional engineering converters.
